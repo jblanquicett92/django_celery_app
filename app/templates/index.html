@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>search uuid</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      ul {
+        list-style-type: none;
+        overflow: hidden;
+      }
+
+      li {
+        float: right;
+      }
+
+      li a {
+        color: #000;
+        display: block;
+        text-align: center;
+        padding: 10px 10px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      li a:hover {
+        text-decoration: underline;
+      }
+      .grid {
+        height: 23px;
+        position: relative;
+        bottom: 4px;
+      }
+      .signbutton {
+        background-color: #4885ed;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 7px 10px;
+        position: relative;
+        bottom: 7px;
+        font-weight: bold;
+      }
+      .logo {
+        margin-top: 200px;
+        margin-bottom: 20px;
+      }
+      .bar {
+        margin: 0 auto;
+        width: 575px;
+        border-radius: 30px;
+        border: 1px solid #dcdcdc;
+      }
+      .bar:hover {
+        box-shadow: 1px 1px 8px 1px #dcdcdc;
+      }
+      .bar:focus-within {
+        box-shadow: 1px 1px 8px 1px #dcdcdc;
+        outline: none;
+      }
+      .searchbar {
+        height: 45px;
+        border: none;
+        width: 500px;
+        font-size: 16px;
+        outline: none;
+      }
+      .voice {
+        height: 20px;
+        position: relative;
+        top: 5px;
+        left: 10px;
+      }
+      .buttons {
+        margin-top: 30px;
+      }
+      .button {
+        background-color: #f5f5f5;
+        border: none;
+        color: #707070;
+        font-size: 15px;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 4px;
+        outline: none;
+      }
+      .button:hover {
+        border: 1px solid #c8c8c8;
+        padding: 9px 19px;
+        color: #808080;
+      }
+      .button:focus {
+        border: 1px solid #4885ed;
+        padding: 9px 19px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <center>
+        <div class="bar">
+          <input id="search_uuid" class="searchbar" type="text" />
+          <a href="#"> </a>
+        </div>
+        <div class="buttons">
+          <button id="btn_uuid" class="button" type="button">Search UUID</button>
+        </div>
+      </center>
+    </div>
+
+      <div class="container mt-4">
+      
+                    <div class="row mt-4 card-holder">
+
+
+                    </div>
+
+      </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+  <script>
+
+    document.getElementById('btn_uuid').onclick=()=>{
+    document.querySelectorAll('.notificaciones').forEach(function (a) {
+        a.remove();
+    })
+      let search_uuid = document.getElementById('search_uuid').value
+      console.log(search_uuid)
+
+        fetch('http://127.0.0.1:8000/api/v1/notification/'+search_uuid)
+        .then(response => response.json())
+        .then(notifications => notifications.forEach(n => {
+
+          console.log(n.date)
+          console.log(n)
+            
+            $('.card-holder').append(
+            `<div class="notificaciones col-sm-6 mb-2 zoom" >
+            <div class="card border-left-info shadow h-100 py-2">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item h5 text-xs font-weight-bold </li>
+
+              <li class="list-group-item text-secondary"> `+n.uuid+` </li>
+              <li class="list-group-item text-secondary"> Event type: `+n.event_type+` </li>
+              <li class="list-group-item text-secondary"> Date: `+n.date+` </li>
+              <li class="list-group-item text-secondary"> Elapsed Time: `+n.elapsed_time+` </li>
+
+              <li class="list-group-item text-secondary"> File name: `+n.event_data.file_name+` </li>
+              <li class="list-group-item text-secondary"> Origin path: `+n.event_data.file_path+` </li>
+              <li class="list-group-item text-secondary"> Moved to: `+n.event_data.moved_to+` </li>
+              <li class="list-group-item text-secondary"> Timestamp: `+n.event_data.received_timestamp+` </li>
+
+            </ul>
+           </div>
+          </div>
+          </div>`);
+        })
+        );
+
+    }
+
+
+  </script>
+
+  </body>
+</html>

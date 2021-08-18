@@ -1,0 +1,10 @@
+"task_start: 2021-08-17 23:04:53.975641"
+"task_end: 2021-08-17 23:05:05.763467"
+"last_value: Index(['Unnamed: 0', 'survived', 'pclass', 'sex', 'name', 'age', 'sibsp',
+       'parch', 'fare', 'embarked', 'deck'],
+      dtype='object')"
+"new_value: Index(['UNNAMED: 0', 'SURVIVED', 'PCLASS', 'SEX', 'NAME', 'AGE', 'SIBSP',
+       'PARCH', 'FARE', 'EMBARKED', 'DECK'],
+      dtype='object')"
+"original_line_numbers: 110"
+"original_file_size: 1008bytes"
