@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
  ## Inicio 🚀 
-Wise Athena API. Es una RESTful API que tiene como principales funcionalidades: recibir ficheros csv y procesarlos, consultar una notificacion, listar notificaciones
+Wise Athena API. Es una RESTful API que tiene como principales funcionalidades: recibir ficheros csv,procesarlos, consultar una notificación, listar notificaciones y a través de una UI consultar Notificaciones.
 
 
 ## Tech
@@ -80,7 +80,7 @@ http://127.0.0.1:8000/api/v1/receive_file/
 }
 ```
 
-En caso de que no existan errores, recibiremos el soguiente response
+En caso de que no existan errores, recibiremos el siguiente response
 
 
 ```sh
@@ -134,7 +134,7 @@ http://127.0.0.1:8000/api/v1/notification/<uuid>
 ```
 ![](assets/2_notification_uuid.png)
 
-- GET: Recibe notificacion filtrada por uuid
+- GET: Recibe notificación filtrada por uuid
 
 ```sh
 [
@@ -171,7 +171,7 @@ http://127.0.0.1:8000/api/v1/notification/<uuid>
 
 ![](assets/1_input_bucket.png)
 
-1. El fichero se encuentra en la direccion: /app/bucket/data-bucket/input/UUID
+1. El fichero se encuentra en la dirección: /app/bucket/data-bucket/input/UUID
 
 ![](assets/1_receive_input_bucket.png)
 
@@ -188,7 +188,7 @@ http://127.0.0.1:8000/api/v1/notification/<uuid>
 
 ![](assets/1_metadata.png)
 
-5. La app genera de manera automatica un documento txt con metadatos del procesamiento en la ruta : /app/bucket/metadata/UUID
+5. La app genera de manera automática un documento txt con metadata del procesamiento en la ruta : /app/bucket/metadata/UUID
 
 ![](assets/1_metada_file.png)
 
