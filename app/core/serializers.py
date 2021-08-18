@@ -4,7 +4,7 @@ from .models import Event, Notification
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        exclude = ('id', 'moved_to', 'received_timestamp')
+        exclude = ('id', 'moved_to', 'received_timestamp',)
 
 class EventExcludeIDSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,7 +17,7 @@ class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
         
-        exclude = ('id')
+        exclude = ('id',)
         
 
         
